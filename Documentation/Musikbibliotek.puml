@@ -1,0 +1,51 @@
+@startuml
+!pragma layout smetana
+
+interface Playable {
+    + void play()
+    + String getTitle()
+    + int getDurationSeconds()
+}
+
+abstract class MediaItem {
+    - String title
+    - int durationSeconds
+    + MediaItem(String title, int durationSeconds)
+    + String getTitle()
+    + int getDurationSeconds()
+    + String toString()
+}
+
+class Song {
+    - String artist
+    + Song(String title, String artist, int durationSeconds)
+}
+
+class Podcast {
+    - String host
+    + Podcast(String title, String host, int durationSeconds)
+}
+
+class Audiobook {
+    - String author
+    + Audiobook(String title, String author, int durationSeconds)
+}
+
+class MediaPlayer {
+    - ArrayList<Playable> playlist
+    + void add(Playable item)
+    + void playAll()
+    + int getTotalDuration()
+    + void printTotalDuration()
+    + void printPlaylist()
+}
+
+Playable <|.. Song : implements
+Playable <|.. Podcast : implements
+Playable <|.. Audiobook : implements
+MediaItem <|-- Song : extends (is-a)
+MediaItem <|-- Podcast : extends (is-a)
+MediaItem <|-- Audiobook : extends (is-a)
+MediaPlayer --> Playable : has-a
+
+@enduml
