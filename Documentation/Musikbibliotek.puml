@@ -10,7 +10,8 @@ interface Playable {
 abstract class MediaItem {
     - String title
     - int durationSeconds
-    + MediaItem(String title, int durationSeconds)
+    + MediaItem(String title,
+      int durationSeconds)
     + String getTitle()
     + int getDurationSeconds()
     + String toString()
@@ -18,17 +19,20 @@ abstract class MediaItem {
 
 class Song {
     - String artist
-    + Song(String title, String artist, int durationSeconds)
+    + Song(String title, String artist,
+    int durationSeconds)
 }
 
 class Podcast {
     - String host
-    + Podcast(String title, String host, int durationSeconds)
+    + Podcast(String title, String host,
+    int durationSeconds)
 }
 
 class Audiobook {
     - String author
-    + Audiobook(String title, String author, int durationSeconds)
+    + Audiobook(String title, String author,
+    int durationSeconds)
 }
 
 class MediaPlayer {
@@ -43,9 +47,9 @@ class MediaPlayer {
 Playable <|.. Song : implements
 Playable <|.. Podcast : implements
 Playable <|.. Audiobook : implements
-MediaItem <|-- Song : extends (is-a)
-MediaItem <|-- Podcast : extends (is-a)
-MediaItem <|-- Audiobook : extends (is-a)
+MediaItem <|-- Song : is-a
+MediaItem <|-- Podcast : is-a
+MediaItem <|-- Audiobook : is-a
 MediaPlayer --> Playable : has-a
 
 @enduml

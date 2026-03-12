@@ -19,7 +19,6 @@ import java.util.ArrayList;
 
         // Returnerer den samlede varighed i sekunder
         public int getTotalDuration(){
-
             int total = 0;
             for(Playable item : playlist){
                 total+= item.getDurationSeconds();
